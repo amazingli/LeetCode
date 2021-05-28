@@ -7,9 +7,9 @@ import java.util.HashMap;
  */
 public class Solution {
 
-    HashMap<Node, Node> visitedHash = new HashMap<Node, Node>();
+    HashMap<ListNode, ListNode> visitedHash = new HashMap<ListNode, ListNode>();
 
-    public Node copyRandomList(Node head) {
+    public ListNode copyRandomList(ListNode head) {
 
         if (head == null) {
             return null;
@@ -18,12 +18,12 @@ public class Solution {
             return this.visitedHash.get(head);
         }
 
-        Node node = new Node(head.val);
+        ListNode listNode = new ListNode(head.val);
 
-        this.visitedHash.put(head, node);
-        node.next = this.copyRandomList(head.next);
-        node.random = this.copyRandomList(head.random);
+        this.visitedHash.put(head, listNode);
+        listNode.next = this.copyRandomList(head.next);
+        listNode.random = this.copyRandomList(head.random);
 
-        return node;
+        return listNode;
     }
 }
